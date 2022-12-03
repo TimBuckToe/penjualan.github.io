@@ -1,12 +1,14 @@
+<!-- vpetugas required -->
+
 <?php
 
 if ($aksi == 'index') {
 	$data['petugas'] = $db->query($connect, "SELECT * FROM tpetugas");
-	$helpers->load_view('Petugas/listpetugas.php', $data);
+	$helpers->template('Petugas/listpetugas', $data);
 }
 
 if ($aksi == 'create') {
-	$helpers->load_view('Petugas/addpetugas.php');
+	$helpers->template('Petugas/addpetugas');
 }
 
 if ($aksi == 'save') {
@@ -14,7 +16,7 @@ if ($aksi == 'save') {
 	$tgllahir = $_POST['tgllahir'];
 	$alamat = $_POST['alamat'];
 	$notelp = $_POST['notelp'];
-	$iduser = $_POST['iduser'];
+	$iduser = $_POST['username'];
 	$simpan = $db->qry($connect, "INSERT INTO tpetugas VALUES('', '$nmpetugas', '$tgllahir', '$alamat', '$notelp', '$iduser')");
 	if ($simpan)
 		header('location:' . $base_url . 'petugas');
@@ -26,7 +28,7 @@ if ($aksi == 'save') {
 if ($aksi == 'edit') {
 	$idpetugas = $uri[4];
 	$data['petugas'] = $db->query($connect, "SELECT * FROM tpetugas WHERE idpetugas=$idpetugas");
-	$helpers->load_view('Petugas/editpetugas.php', $data);
+	$helpers->template('Petugas/editpetugas', $data);
 }
 if ($aksi == 'update') {
 	$idpetugas = $uri[4];

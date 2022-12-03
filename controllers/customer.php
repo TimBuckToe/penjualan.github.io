@@ -2,11 +2,11 @@
 
 if ($aksi == 'index') {
     $data['customer'] = $db->query($connect, "SELECT * FROM tcustomer");
-    $helpers->load_view('Customer/listcustomer.php', $data);
+    $helpers->template('Customer/listcustomer', $data);
 }
 
 if ($aksi == 'create') {
-    $helpers->load_view('Customer/addcustomer.php');
+    $helpers->template('Customer/addcustomer');
 }
 
 if ($aksi == 'save') {
@@ -27,7 +27,9 @@ if ($aksi == 'save') {
 if ($aksi == 'edit') {
     $idcustomer = $uri[4];
     $data['customer'] = $db->query($connect, "SELECT * FROM tcustomer WHERE idcust=$idcustomer");
-    $helpers->load_view('Customer/editcustomer.php', $data);
+    $data['jenkel'] = $db->query($connect, "SELECT * FROM tcustomer");
+
+    $helpers->template('Customer/editcustomer', $data);
 }
 
 if ($aksi == 'update') {
@@ -52,7 +54,7 @@ if ($aksi == 'delete') {
         # code...
         header('location:' . $base_url . 'customer');
     } else {
-        header('location:' . $base_url . 'customer/delete/');
+        header('location:' . $base_url . 'customer/delete');
     }
 }
 

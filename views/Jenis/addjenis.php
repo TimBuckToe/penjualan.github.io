@@ -4,12 +4,14 @@
     <caption>
         <h1 class="text-center">Data jenis</h1>
     </caption>
-    <form class="justify-content-center align-items-center" action="<?= $base_url ?>jenis/save" method="post">
+    <form class="justify-content-center align-items-center" action="<?= $base_url ?>jenis/save/" method="post">
         <label class="form-label" for="">Jenis Barang</label>
-        <input class="form-control" type="text" name="jenisbarang" id="" placeholder="Jenis Barang" required>
+        <input class="metro-input" type="text" name="jenisbarang" id="" placeholder="Jenis Barang" required>
         <label class="form-label" for="">Keterangan</label>
-        <input class="form-control mb-3" type="text" name="ket" id="" placeholder="Keterangan" required>
-        <button type="submit" class="btn btn-primary rounded-pill">Simpan</button>
-        <button type="reset" class="btn btn-warning  rounded-pill">Batal</button>
+        <input class="metro-input mb-3" type="text" name="ket" id="" placeholder="Keterangan" required>
+        <button type="submit" class="button primary rounded-pill">Simpan</button>
+        <button type="reset" class="button alert  rounded-pill">Batal</button>
+        <!-- <button type="reset" href="<?= $base_url; ?> jenis/create" class="button alert rounded-pill">Back</button> -->
+
     </form>
 </div>

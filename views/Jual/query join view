@@ -1,0 +1,12 @@
+CREATE VIEW vbarang AS SELECT
+tbarang.idbarang,tbarang.nmbarang,tjenis.idjenis,tjenis.jenisbarang,
+tbarang.stok,tbarang.harga,tdistributor.iddist,tdistributor.nmdist,tbarang.status
+FROM tbarang JOIN tjenis ON tbarang.idjenis=tjenis.idjenis
+JOIN tdistributor ON tbarang.iddist=tdistributor.iddist
+
+CREATE VIEW vjual AS SELECT
+tjual.idjual,tjual.tgljual,tbarang.nmbarang,tjual.harga,tjual.jmlbarang,
+tcustomer.nmcust,tjual.totalharga,tjual.bayar,tjual.kembali,tpetugas.nmpetugas
+FROM tjual JOIN tbarang ON tjual.idbarang=tbarang.idbarang
+JOIN tcustomer ON tjual.idcust=tcustomer.idcust
+JOIN tpetugas ON tjual.idpetugas=tpetugas.idpetugas

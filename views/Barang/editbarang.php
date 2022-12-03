@@ -23,18 +23,11 @@ foreach ($data['barang'] as $edit) {
         </div>
         <div>
             <label class="form-label" for="">Jenis Barang</label>
-            <select class="form-select" name="idjenis" id="">
-                <option value="">Pilih</option>
-                <?php
-                foreach ($data['jenis'] as $jenis) {
-                ?>
-                    <option value="<?= $jenis['idjenis'] ?>"><?= $jenis['jenisbarang'] ?></option>
-                <?php }  ?>
-            </select>
+            <input type="text" class="metro-input" name="idjenis" value="<?= $edit['jenisbarang'] ?>" placeholder="" readonly>
         </div>
         <div>
             <label class="form-label" for="">Stok Barang</label>
-            <input class="form-control" name="stok" type="text" placeholder="Stok Barang" value="<?= $edit['stok'] ?>">
+            <input class="form-control" name="stok" type="number" placeholder="Stok Barang" value="<?= $edit['stok'] ?>">
         </div>
         <div>
             <label class="form-label" for="">Harga Barang</label>
@@ -42,13 +35,9 @@ foreach ($data['barang'] as $edit) {
         </div>
         <div>
             <label class="form-label" for="">Pengirim</label>
-            <select class="form-select mb-3" name="iddist" id="">
-                <?php
-                foreach ($data['barang'] as $barang) {
-                ?>
-                    <option value="<?= $barang['iddist'] ?>"><?= $barang['nmdist'] ?></option>
-                <?php }  ?>
-            </select>
+            <input type="text" class="metro-input" name="iddist" value="<?= $edit['nmdist'] ?>" readonly>
+
+
         </div>
         <div>
             <button type="submit" class="btn btn-success rounded-pill  mb-1">Simpan</button>

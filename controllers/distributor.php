@@ -2,11 +2,11 @@
     if($aksi=='index')
     {
         $data['distri']=$db->query($connect, "SELECT * FROM tdistributor");
-        $helpers->load_view('Distributor/listdistributor.php', $data);
+        $helpers->template('Distributor/listdistributor', $data);
     }
     if($aksi=='create')
     {
-        $helpers->load_view('Distributor/adddistributor.php');
+        $helpers->template('Distributor/adddistributor');
     }
     if($aksi=='save')
     {
@@ -24,7 +24,7 @@
     {
         $iddist=$uri[4];
         $data['distri']=$db->query($connect,"SELECT * FROM tdistributor WHERE iddist=$iddist");
-        $helpers->load_view('Distributor/editdistributor.php',$data);
+        $helpers->template('Distributor/editdistributor',$data);
     }
     if ($aksi=='update') 
     {

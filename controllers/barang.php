@@ -3,7 +3,7 @@
 if ($aksi == 'index') {
     # code...
     $data['barang'] = $db->query($connect, "SELECT * FROM vbarang");
-    $helpers->load_view('Barang/listbarang.php', $data);
+    $helpers->template('Barang/listbarang', $data);
 }
 
 if ($aksi == 'create') {
@@ -11,7 +11,7 @@ if ($aksi == 'create') {
     $data['kdbarang'] = $db->query($connect, "SELECT max(idbarang) AS kodebarang FROM tbarang");
     $data['jenis'] = $db->query($connect, "SELECT * FROM tjenis");
     $data['distri'] = $db->query($connect, "SELECT * FROM tdistributor");
-    $helpers->load_view('Barang/addbarang.php', $data);
+    $helpers->template('Barang/addbarang', $data);
 }
 if ($aksi == 'save') {
     $idbarang = $_POST['idbarang'];
@@ -21,7 +21,7 @@ if ($aksi == 'save') {
     $harga = $_POST['harga'];
     $iddist = $_POST['iddist'];
     $status = 1;
-    $simpan = $db->qry($connect, "INSERT INTO vbarang VALUES('$idbarang','$nmbarang','$idjenis','$stok','$harga','$iddist','$status')");
+    $simpan = $db->qry($connect, "INSERT INTO tbarang VALUES('$idbarang','$nmbarang','$idjenis','$stok','$harga','$iddist','$status')");
     if ($simpan)
         header('location:' . $base_url . 'barang');
     else {
@@ -31,8 +31,11 @@ if ($aksi == 'save') {
 
 if ($aksi == 'edit') {
     $idbarang = $uri[4];
-    $data['barang'] = $db->query($connect, "SELECT * FROM tbarang WHERE idbarang=$idbarang");
-    $helpers->load_view('Barang/editbarang.php', $data);
+    $data['barang'] = $db->query($connect, "SELECT * FROM vbarang WHERE idbarang=$idbarang");
+    $data['jenis'] = $db->query($connect, "SELECT * FROM tjenis");
+    $data['distri'] = $db->query($connect, "SELECT * FROM tdistributor");
+    // $data['stok'] = $db->query($connect, "SELECT * FROM tbarang");
+    $helpers->template('Barang/editbarang', $data);
 }
 if ($aksi == 'update') {
     # code...
@@ -42,7 +45,7 @@ if ($aksi == 'update') {
     $stok = $_POST['stok'];
     $harga = $_POST['harga'];
     $iddist = $_POST['iddist'];
-    $update = $db->qry($connect, "UPDATE tbarang SET nmbarang='$nmbarang', idjenis='$idjenis', stok='$stok', harga='$harga', iddist='$iddist' WHERE idbarang='$idbarang'");
+    $update = $db->qry($connect, "UPDATE tbarang SET nmbarang='$nmbarang', stok='$stok', harga='$harga' WHERE idbarang='$idbarang'");
     if ($update) {
         # code...
         header('location:' . $base_url . 'barang');

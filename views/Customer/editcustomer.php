@@ -19,8 +19,8 @@
     <div>
         <label for="" class="form-label">jenis Kelamin</label>
         <select name="jenkel" id="" class="form-select mb-3" value="<?= $edit['jenkel'] ?>">
-            <option value="Laki-laki">Laki-laki</option>
-            <option value="Perempuan">Perempuan</option>
+            <option value="L">Laki-laki</option>
+            <option value="P">Perempuan</option>
         </select>
     </div>
 

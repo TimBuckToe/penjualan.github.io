@@ -18,8 +18,8 @@
     </div>
     <label class="form-label" for="">No telpon</label>
     <input class="form-control mb-3" type="text" name="notelp" id="" placeholder="No Telepon" required>
-    <label class="form-label" for="">Nama User</label>
-    <input class="form-control mb-3" type="text" name="iduser" id="" readonly>
+    <label class="form-label" for="">Username</label>
+    <input class="form-control mb-3" type="text" name="username" id="">
     <button type="submit" class="btn btn-success rounded-pill  mb-1">Simpan</button>
     <button type="reset" class="btn btn-danger rounded-pill  mb-1">Batal</button>
 </form>
